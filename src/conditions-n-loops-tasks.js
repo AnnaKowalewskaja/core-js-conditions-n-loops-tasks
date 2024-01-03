@@ -117,8 +117,21 @@ function isIsoscelesTriangle(a, b, c) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  const symbols = ['X', 'IX', 'V', 'IV', 'I'];
+  const values = [10, 9, 5, 4, 1];
+
+  let result = '';
+  let remaining = num;
+
+  for (let i = 0; i < symbols.length; i += 1) {
+    while (remaining >= values[i]) {
+      result += symbols[i];
+      remaining -= values[i];
+    }
+  }
+
+  return result;
 }
 
 /**
@@ -139,7 +152,6 @@ function convertToRomanNumerals(/* num */) {
 function convertNumberToString(/* numberStr */) {
   throw new Error('Not implemented');
 }
-
 /**
  * Determines whether a string is a palindrome.
  * In this task, the use of methods of the String and Array classes is not allowed.
@@ -152,8 +164,14 @@ function convertNumberToString(/* numberStr */) {
  *  '0123210'   => true
  *  'qweqwe'    => false
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  const len = str.length;
+  for (let i = 0; i < len / 2; i += 1) {
+    if (str[i] !== str[len - 1 - i]) {
+      return false;
+    }
+  }
+  return true;
 }
 
 /**
